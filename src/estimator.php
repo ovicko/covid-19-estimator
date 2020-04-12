@@ -6,6 +6,8 @@ function covid19ImpactEstimator($data)
   $response = array();
 
   $response['impact']['currentlyInfected'] = (int)$data['reportedCases'] * 10;
+
   $response['data'] = $data;
+  $response['severeImpact']['currentlyInfected'] = (int)$data['reportedCases'] * 50;
   return $response;
 }
