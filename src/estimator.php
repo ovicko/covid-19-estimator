@@ -35,5 +35,7 @@ function covid19ImpactEstimator($data)
   $response['impact']['hospitalBedsByRequestedTime'] = (int)(($data['totalHospitalBeds'] * 35/100) - $response['impact']['severeCasesByRequestedTime']);
   $response['severeImpact']['hospitalBedsByRequestedTime'] = (int)(($data['totalHospitalBeds'] * 35/100) - $response['severeImpact']['severeCasesByRequestedTime']);
 
+  $response['impact']['casesForICUByRequestedTime'] = (int)($response['impact']['infectionsByRequestedTime'] * 5/100);
+  $response['severeImpact']['casesForICUByRequestedTime'] = (int)($response['severeImpact']['infectionsByRequestedTime'] * 5/100);
   return $response;
 }
