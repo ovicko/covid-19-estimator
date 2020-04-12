@@ -37,5 +37,15 @@ function covid19ImpactEstimator($data)
 
   $response['impact']['casesForICUByRequestedTime'] = (int)($response['impact']['infectionsByRequestedTime'] * 5/100);
   $response['severeImpact']['casesForICUByRequestedTime'] = (int)($response['severeImpact']['infectionsByRequestedTime'] * 5/100);
+
+  $response['impact']['casesForVentilatorsByRequestedTime'] = (int)($response['impact']['infectionsByRequestedTime'] * 2/100);
+  $response['severeImpact']['casesForVentilatorsByRequestedTime'] = (int)($response['severeImpact']['infectionsByRequestedTime'] * 2/100);
+
+  $_avgDailyIncomeInUSD = $data['region']['avgDailyIncomeInUSD'];
+  $_avgDailyIncomePopulation = $data['region']['avgDailyIncomePopulation'];
+
+  $response['impact']['dollarsInFlight'] = (int)( ($response['impact']['infectionsByRequestedTime'] * $_avgDailyIncomePopulation  * $_avgDailyIncomeInUSD ) / $_days );
+  $response['severeImpact']['dollarsInFlight'] = (int)(($response['severeImpact']['infectionsByRequestedTime'] * $_avgDailyIncomePopulation  * $_avgDailyIncomeInUSD ) / $_days );
+
   return $response;
 }
