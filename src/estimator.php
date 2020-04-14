@@ -16,7 +16,7 @@ function covid19ImpactEstimator($data)
   }
 
   if ($data['periodType'] === 'weeks') {
-      $elapsedDays = $timeToElapse * 7;
+    $elapsedDays = $timeToElapse * 7;
   }
 
   if ($data['periodType'] === 'months') {
